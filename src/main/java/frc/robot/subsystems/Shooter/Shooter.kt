@@ -11,9 +11,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase
 
 import com.revrobotics.spark.config.SparkMaxConfig
 import edu.wpi.first.units.Units
+/*
+* CHICOS, EL SHOOTER TAMBIEN ES INDEXER, recuerdenlo
+* */
 
-
-object Shooter : SubsystemBase() {
+class Shooter : SubsystemBase() {
     val sparkConfig = SparkMaxConfig()
     val config = shooterConfig
     val motorController= SparkMax(config.motorControllerID, SparkLowLevel.MotorType.kBrushless)
@@ -22,7 +24,7 @@ object Shooter : SubsystemBase() {
         motorController.setVoltage(volts)
     }
 
-    fun stopMotor(){
+    fun stopMotor(){ // Para apagar el motor
         motorController.setVoltage(0.0)
     }
 /*
@@ -30,6 +32,8 @@ object Shooter : SubsystemBase() {
         return motorController.get()
     }
 */
+
+
     init{
         sparkConfig.inverted(config.inverted)
         sparkConfig.idleMode(SparkBaseConfig.IdleMode.kBrake)
